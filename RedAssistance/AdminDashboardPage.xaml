@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.AdminDashboardPage"
+             BackgroundColor="White"
+             Title="Dashboard">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Search" Priority="1" Order="Secondary" Clicked="SearchClicked"/>
+        <ToolbarItem Name="Add Donor" Priority="2" Order="Secondary" Clicked="AddDonorClicked"/>
+        <ToolbarItem Name="Add Request" Priority="3" Order="Secondary" Clicked="AddRequestClicked"/>
+        <ToolbarItem Name="Add Member" Priority="4" Order="Secondary" Clicked="AddUserClicked"/>
+        <ToolbarItem Name="Export Data" Priority="5" Order="Secondary" Clicked="ExportClicked"/>
+        <ToolbarItem Name="Send Message" Priority="6" Order="Secondary" Clicked="SendMessageClicked"/>
+        <ToolbarItem Name="Change Password" Priority="7" Order="Secondary" Clicked="ChangePasswordClicked"/>
+        <ToolbarItem Name="Logout" Priority="8" Order="Secondary" Clicked="AdminLogout"/>
+        <ToolbarItem Name="Refresh" Icon="Refresh.png" Priority="0" Order="Primary" Clicked="BtnRefreshClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <StackLayout x:Name="LayoutAdmin" Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <SearchBar x:Name="AdminSearchBar" Placeholder="Search by cell number"
+                           TextChanged="AdminSearchBarTextChanged"/>
+
+                <Grid RowSpacing="0" ColumnSpacing="2" Margin="0,2,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"/>
+                        <ColumnDefinition Width="0.25*"/>
+                        <ColumnDefinition Width="0.25*"/>
+                        <ColumnDefinition Width="0.25*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+                         BackgroundColor="#d21d1d" HeightRequest="30"/>
+
+                    <StackLayout x:Name="SLblTeam" Grid.Row="0" Grid.Column="0" HeightRequest="30"/>
+                    <Label x:Name="LblTeam" Text="Team" TextColor="White"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                   Grid.Row="0" Grid.Column="0"/>
+                    <StackLayout x:Name="TLblTeam" Grid.Row="0" Grid.Column="0" HeightRequest="30">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TLblTeamTapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="SLblDonors" Grid.Row="0" Grid.Column="1" HeightRequest="30"/>
+                    <Label x:Name="LblDonors" Text="Donors" TextColor="White"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                   Grid.Row="0" Grid.Column="1"/>
+                    <StackLayout x:Name="TLblDonors" Grid.Row="0" Grid.Column="1" HeightRequest="30">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TLblDonorsTapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="SLblRequests" Grid.Row="0" Grid.Column="2" HeightRequest="30"/>
+                    <Label x:Name="LblRequests" Text="Requests" TextColor="White"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                   Grid.Row="0" Grid.Column="2"/>
+                    <StackLayout x:Name="TLblRequests" Grid.Row="0" Grid.Column="2" HeightRequest="30">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TLblRequestTapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="SLblUsers" Grid.Row="0" Grid.Column="3" HeightRequest="30"/>
+                    <Label x:Name="LblUsers" Text="Users" TextColor="White"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                   Grid.Row="0" Grid.Column="3"/>
+                    <StackLayout x:Name="TLblUsers" Grid.Row="0" Grid.Column="3" HeightRequest="30">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TLblUserTapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                </Grid>
+
+                <StackLayout x:Name="TeamStack" Orientation="Vertical">
+                    <Grid Padding="0" BackgroundColor="#941a3d" ColumnSpacing="1" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="DarkGray" HeightRequest="20"/>
+                        <Label Text="Id" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="0"/>
+                        <Label Text="Name" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="Role" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="2"/>
+
+                    </Grid>
+                    <ListView x:Name="LvTeam" CachingStrategy="RecycleElement"
+                              VerticalOptions="FillAndExpand" SeparatorColor="Black" 
+                              HasUnevenRows="True" ItemTapped="LvTeamTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell IsEnabled="True">
+                                    <Grid Padding="0" ColumnSpacing="1" RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.1*"/>
+                                            <ColumnDefinition Width="0.5*"/>
+                                            <ColumnDefinition Width="0.4*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="20"/>
+                                        <Label Text="{Binding Id}"  HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="0"/>
+                                        <Label Text="{Binding UserName}" HorizontalTextAlignment="Start" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="1"/>
+                                        <Label Text="{Binding Role}" HorizontalTextAlignment="Start" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="2"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout x:Name="DonorStack" IsVisible="False" Orientation="Vertical">
+                    <Grid Padding="0" BackgroundColor="#941a3d" ColumnSpacing="1" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="DarkGray" HeightRequest="20"/>
+                        <Label Text="Id" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="0"/>
+                        <Label Text="Name" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="Contact#" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="2"/>
+                        <Label Text="Blood" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="3"/>
+
+                    </Grid>
+                    <ListView x:Name="LvDonors" CachingStrategy="RecycleElement" VerticalOptions="FillAndExpand" SeparatorColor="Black" HasUnevenRows="True" ItemTapped="LvDonorsTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell IsEnabled="True">
+                                    <Grid Padding="0" ColumnSpacing="1" RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.1*"/>
+                                            <ColumnDefinition Width="0.4*"/>
+                                            <ColumnDefinition Width="0.3*"/>
+                                            <ColumnDefinition Width="0.2*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest="20"/>
+                                        <Label Text="{Binding Id}"  HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="0"/>
+                                        <Label Text="{Binding CapName}" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="1"/>
+                                        <Label Text="{Binding CellNumber}" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="2"/>
+                                        <Label Text="{Binding BloodGroup}" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="3"/>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout x:Name="RequestStack" IsVisible="False" Orientation="Vertical">
+                    <Grid Padding="0" BackgroundColor="#941a3d" ColumnSpacing="1" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="DarkGray" HeightRequest="20"/>
+                        <Label Text="Id" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="0"/>
+                        <Label Text="Name" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="Contact#" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="2"/>
+                        <Label Text="Blood" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="3"/>
+
+                    </Grid>
+                    <ListView x:Name="LvRequests" CachingStrategy="RecycleElement" VerticalOptions="FillAndExpand" SeparatorColor="Black" HasUnevenRows="True" ItemTapped="LvRequestsTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell IsEnabled="True">
+                                    <Grid Padding="0" ColumnSpacing="1" RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.1*"/>
+                                            <ColumnDefinition Width="0.4*"/>
+                                            <ColumnDefinition Width="0.3*"/>
+                                            <ColumnDefinition Width="0.2*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest="20"/>
+                                        <Label Text="{Binding Id}"  HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="0"/>
+                                        <Label Text="{Binding CapName}"  LineBreakMode="NoWrap" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="1"/>
+                                        <Label Text="{Binding CellNumber}" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="2"/>
+                                        <Label Text="{Binding BloodGroup}" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="3"/>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout x:Name="UsersStack" IsVisible="False" Orientation="Vertical">
+                    <Grid Padding="0" BackgroundColor="#941a3d" ColumnSpacing="1" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.08*"/>
+                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.32*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="DarkGray" HeightRequest="20"/>
+                        <Label Text="Id" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="0"/>
+                        <Label Text="Name" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="Contact#" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="2"/>
+                        <Label Text="Area" HorizontalTextAlignment="Center" FontSize="13" TextColor="White" Grid.Row="0" Grid.Column="3"/>
+
+                    </Grid>
+                    <ListView x:Name="LvUsers" CachingStrategy="RecycleElement" VerticalOptions="FillAndExpand" SeparatorColor="Black" HasUnevenRows="True" ItemTapped="LvUsersTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell IsEnabled="True">
+                                    <Grid Padding="0" ColumnSpacing="1" RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.08*"/>
+                                            <ColumnDefinition Width="0.35*"/>
+                                            <ColumnDefinition Width="0.25*"/>
+                                            <ColumnDefinition Width="0.32*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest="20"/>
+                                        <Label Text="{Binding Id}"  HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="0"/>
+                                        <Label Text="{Binding CapName}" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" FontSize="13" VerticalOptions="CenterAndExpand" TextColor="#941a3d" Grid.Row="0" Grid.Column="1"/>
+                                        <Label Text="{Binding CellNumber}" HorizontalTextAlignment="Start" FontSize="13" VerticalOptions="CenterAndExpand" TextColor="#941a3d" Grid.Row="0" Grid.Column="2"/>
+                                        <Label Text="{Binding Area}" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="#941a3d" Grid.Row="0" Grid.Column="3"/>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

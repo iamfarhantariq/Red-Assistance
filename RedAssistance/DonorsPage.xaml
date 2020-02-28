@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.DonorsPage"
+             BackgroundColor="White"
+             Title="Donors">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Export" Priority="1" Order="Primary" Clicked="ExportClicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout Style="{StaticResource GeneralLayout}">
+            <StackLayout Style="{StaticResource GeneralLayout}" 
+                                 AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <ListView x:Name="LvDonors" CachingStrategy="RecycleElement" HasUnevenRows="True" ItemTapped="LvDonorsTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Spacing="0">
+                                        <Frame Margin="2,5,2,5" CornerRadius="15" Padding="0" HeightRequest="60">
+                                            <Grid Margin="2" IsClippedToBounds="True" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="0.15*"/>
+                                                    <ColumnDefinition Width="0.5*"/>
+                                                    <ColumnDefinition Width="0.15*"/>
+                                                    <ColumnDefinition Width="0.15*"/>
+                                                    <ColumnDefinition Width="0.05*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Frame CornerRadius="100" HeightRequest="30" WidthRequest="30" BackgroundColor="#d21d1d"
+                                                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                                   Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+
+                                                <Label 
+                                                   Text="{Binding BloodGroup}"
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                                   FontSize="16" TextColor="White"
+                                                   Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+
+                                                <Label Text="{Binding CapName}"
+                                                   VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" LineBreakMode="NoWrap"
+                                                   Margin="10,0,0,0"  FontSize="20" TextColor="#d21d1d" FontAttributes="Bold"
+                                                   Grid.Row="0" Grid.Column="1"/>
+
+                                                <Label Text="{Binding CellNumber}"
+                                                   VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                                   Margin="10,0,0,0"  FontSize="15" TextColor="Gray"
+                                                   Grid.Row="1" Grid.Column="1"/>
+
+                                                <Image Source="Call.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                                                             BackgroundColor="Default" Margin="5" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer CommandParameter="{Binding CellNumber}" Tapped="CallButtonClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Image Source="Message.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                                             BackgroundColor="Default" Margin="5" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer CommandParameter="{Binding CellNumber}" Tapped="MessageButtonClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
+                                                <Image  Source="RightArrow.png" VerticalOptions="Center" BackgroundColor="Default"
+                                                    Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"/>
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

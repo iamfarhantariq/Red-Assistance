@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.ItemSelectedPage"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="10" RowSpacing="3" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="0.35*"/>
+                    <ColumnDefinition  Width="0.15*"/>
+                    <ColumnDefinition  Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Detail" HorizontalTextAlignment="Center" FontSize="22" FontAttributes="Bold" TextColor="White" BackgroundColor="#d21d1d" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <Label Text="Name " Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="LblName" TextColor="#424949" FontSize="Medium" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label Text="Blood Group" Grid.Row="2" Grid.Column="0"/>
+                <Label x:Name="LblBlood" TextColor="#d21d1d" FontSize="Medium" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label Text="Cell #" Grid.Row="3" Grid.Column="0"/>
+                <Label x:Name="LblCell" TextColor="#d21d1d" FontSize="Medium" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                <Label x:Name="LblAreaText" Text="Area" IsVisible="False" Grid.Row="4" Grid.Column="0"/>
+                <Label x:Name="LbHospitalText" Text="Hospital" IsVisible="False" Grid.Row="4" Grid.Column="0"/>
+                <Label x:Name="LblArea" TextColor="#424949" FontSize="Small" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                <Label Text="City" Grid.Row="5" Grid.Column="0"/>
+                <Label x:Name="LblCity" TextColor="#424949" FontSize="Medium" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label Text="Added by" Grid.Row="6" Grid.Column="0"/>
+                <Label x:Name="LblAddedby" TextColor="#424949" FontSize="Small" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label x:Name="LblTodayDate" FontSize="10" HorizontalTextAlignment="End" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+                <StackLayout HeightRequest="30" Margin="0,0,5,0" BackgroundColor="#d21d1d" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Label Text="Call" TextColor="White"
+                           FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CallButtonClicked"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout HeightRequest="30" Margin="5,0,0,0" BackgroundColor="#d21d1d" Grid.Row="9" Grid.Column="2">
+                    <Label Text="Message" TextColor="White"
+                           FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="MessageButtonClicked"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#d21d1d" HeightRequest="30" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Label x:Name="LblShare" Text="Share" TextColor="White"
+                               FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShareLabel_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

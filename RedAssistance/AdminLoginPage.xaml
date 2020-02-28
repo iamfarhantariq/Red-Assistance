@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.AdminLoginPage"
+             BackgroundColor="White"
+             Title="Admin Console">
+    <ContentPage.Content>
+        <AbsoluteLayout Style="{StaticResource GeneralLayout}">
+
+            <ScrollView x:Name="LoginLayoutScrlvw" Style="{StaticResource CustomScrolView}" 
+                            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout Style="{StaticResource GeneralLayout}" 
+                                 AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                    <Image Source="RedAssistance" HeightRequest="100" HorizontalOptions="CenterAndExpand"/>
+
+                    <Entry x:Name="EntCell" Placeholder="03XXXXXXXXX" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Entry x:Name="EntPassword" Placeholder="Password" IsPassword="True" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Label x:Name="LblForget" Text="Forget Password?" TextColor="Blue" Margin="0,0,30,0"
+                           FontSize="13" HorizontalOptions="End">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="BtnForgetPasswordLabel" Tapped="BtnForgetPasswordLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Button x:Name="LoginBtn" Text="Login" Style="{StaticResource CustomButtonStyle}"
+                            Clicked="LoginBtn_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+
+            <ScrollView x:Name="ChangePasswordLayer" IsVisible="False" Style="{StaticResource CustomScrolView}" 
+                            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout AbsoluteLayout.LayoutFlags="All" Margin="0,10,0,0" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                    <Label Text="Confirmation Code" x:Name="LblHeaderConfirmCode" IsVisible="False" Style="{StaticResource CustomLabelEntryStyle}"/>
+                    <Entry x:Name="EntCode" IsVisible="False" Placeholder="Enter your received code" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Label Text="New Password"  Style="{StaticResource CustomLabelEntryStyle}"/>
+                    <Entry x:Name="EntNewPassword" Placeholder="Enter New Password" IsPassword="True" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Label Text="Confirm New Password"  Style="{StaticResource CustomLabelEntryStyle}"/>
+                    <Entry x:Name="EntConfirmPassword" Placeholder="Enter Password Again" IsPassword="True" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Button x:Name="SaveBtn" Text="Save" Style="{StaticResource CustomButtonStyle}"
+                            Clicked="SaveBtn_Clicked"/>
+                    
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

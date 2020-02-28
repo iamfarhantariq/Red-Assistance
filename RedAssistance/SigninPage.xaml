@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.SigninPage"
+             BackgroundColor="White"
+             Title="Login">
+    <ContentPage.Content>
+        <AbsoluteLayout Style="{StaticResource GeneralLayout}">
+
+            <ScrollView x:Name="LoginLayoutScrlvw" Style="{StaticResource CustomScrolView}" 
+                            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout Style="{StaticResource GeneralLayout}" 
+                                 AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                    <Image Source="RedAssistance" HeightRequest="100" HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Text="Cell Number" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntCellName" Keyboard="Telephone" Placeholder="03XXXXXXXXX" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Label x:Name="LblPassword" Text="Password" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntPassword" Placeholder="Enter Password" IsPassword="True" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Label x:Name="LblForget" Text="Forget Password?" TextColor="Blue" Margin="0,0,30,0"
+                               FontSize="13" HorizontalOptions="End">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="BtnForgetPasswordLabel" Tapped="BtnForgetPasswordLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Button x:Name="LoginBtn" Text="Login" Style="{StaticResource CustomButtonStyle}"
+                                Clicked="LoginBtn_Clicked"/>
+
+                    <Label Text="If you don't have account you can create by tapping the register button." Margin="5,20,5,0" HorizontalTextAlignment="Center"/>
+                    <Button x:Name="RegisterBtn" Text="Register as new user" 
+                                Clicked="RegisterBtn_OnClicked" Style="{StaticResource CustomButtonStyle}"/>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.AddUserPage"
+             BackgroundColor="White"
+             Title="Add User">
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView VerticalOptions="StartAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout x:Name="StackLayoutAddUser" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         Style="{StaticResource CustomStackLayoutEnteriesStyle}">
+
+                    <Label Text="Full Name" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntFullName" Placeholder="Example( Muhammad Ali )" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Label Text="Select Role" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Picker x:Name="PkrRole" Title="Role" Style="{StaticResource CustomEntryStyle}"
+                            SelectedIndexChanged="PkrRoleSelectedIndexChanged"/>
+
+                    <Label Text="From" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntFrom" Placeholder="From" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Label Text="CellNumber" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntCellNumber" Placeholder="03XXXXXXXXX" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Button Text="Add User" x:Name="BtnAddUser" Style="{StaticResource CustomButtonStyleBottomMargin}"
+                        Clicked="BtnAddUser_OnClicked"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

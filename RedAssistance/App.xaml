@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedAssistance.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#d21d1d"></Setter>
+                <Setter Property="BarTextColor" Value="White"></Setter>
+            </Style>
+
+            <Style x:Key="CustomLabelGridBlood" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="#d21d1d"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="HeightRequest" Value="50"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+            </Style>
+
+            <Style x:Key="CustomActivityIndicator" TargetType="ActivityIndicator">
+                <Setter Property="IsRunning" Value="False"/>
+                <Setter Property="IsVisible" Value="False"/>
+            </Style>
+
+            <Style x:Key="CustomScrolView" TargetType="ScrollView">
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+            </Style>
+
+            <Style x:Key="GeneralLayout" TargetType="Layout">
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+
+            <Style x:Key="CustomHeadingLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#d21d1d"/>
+                <Setter Property="Margin" Value="15,0,15,0"/>
+            </Style>
+
+            <Style x:Key="CustomDetailLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#d21d1d"/>
+                <Setter Property="Margin" Value="15,0,15,0"/>
+            </Style>
+
+            <Style x:Key="CustomUnderLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="Margin" Value="0,0,40,0"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="IsVisible" Value="False"/>
+            </Style>
+
+            <Style x:Key="CustomEntryStyle" TargetType="Entry">
+                <Setter Property="Margin" Value="20,0,20,0"/>
+                <Setter Property="Placeholder" Value="10,0,0,0"/>
+            </Style>
+
+            <Style x:Key="CustomButtonStyleBottomMargin" TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#d21d1d"/>
+                <Setter Property="Margin" Value="10,0,10,100"/>
+            </Style>
+
+            <Style x:Key="CustomLabelEntryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#d21d1d"/>
+                <Setter Property="Margin" Value="30,0,0,0"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <Style x:Key="CustomLabelTermsConditionStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#424949"/>
+                <Setter Property="Margin" Value="10,5,10,5"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="VerticalTextAlignment" Value="Start"/>
+            </Style>
+
+            <Style x:Key="CustomStackLayoutEnteriesStyle" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="Margin" Value="0,10,0,10"/>
+            </Style>
+
+            <Style x:Key="CustomButtonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="#d21d1d"/>
+                <Setter Property="Margin" Value="10,0,10,0"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

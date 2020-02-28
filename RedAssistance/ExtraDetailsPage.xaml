@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.ExtraDetailsPage"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Image x:Name="DetailImg" Source="BloodDetails.png" IsVisible="False"/>
+
+                <StackLayout x:Name="TermsCondition" IsVisible="False">
+
+                    <Image Source="TermsConditionsPage"/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                           Text="- People registering on this App must understand that the information provided by them on the registration page is available to a person seeking for a particular blood group."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                           Text="- We do not sell contact details of potential donors to any third party or use it in any way for commercial gains."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                           Text="- We do not arrange for blood. We only provide relevant information about potential donors to those in need of blood."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                           Text="- We do not guarantee that a potential donor will agree to donate blood whenever called upon to do so. It is entirely at the discretion of the individual whether or not to donate blood."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                           Text="- We do not claim that potential donors are free from any disease, ailment, or bodily conditions preventing them from donating blood at the time when they are contacted for blood donation. Onus is completely on the individual looking for blood to verify these details from the donor."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                           Text="- We urge you not to make false registrations if you do not seriously wish to donate blood. It is a matter of life and death for those in need of blood in an emergency or otherwise."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                           Text="- We reserve right to inactivate member at any given time in case found wrong information given or misuse of service."/>
+                </StackLayout>
+
+                <StackLayout x:Name="Eligibility" IsVisible="False">
+
+                    <Label Text="You can Donate!!" TextColor="#d21d1d" FontSize="Large" Margin="0,10,0,0" FontAttributes="Bold"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="1.  If You are between age group of '18-60 Years'."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="2.  If Your weight is '45 KG' or more."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="3.  If Your 'Hemoglobin' is '12.5 gm%' minimum."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="4.  If Your last blood donation was '3 or more Months' earlier."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="5.  If You are 'Healthy' and have not suffered from 'MALARIA, TYPHOID or other Transmissible' disease in the recent past."/>
+
+                    <Label Text="You cannot Donate!!" TextColor="#d21d1d" FontSize="Large" Margin="0,20,0,0" FontAttributes="Bold"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="1.  If 'Cold / Fever' in the past 1 week."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="2.  If Under treatment with 'Antibiotics' or any other 'Medication'."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="3.  If 'Cardiac Problems', 'Hypertension', 'Epilepsy', 'Diabetes (on Insulin Therapy)', history of 'Cancer', 'Chronic Kidney' or 'Liver Disease', 'Bleeding Tendencies', 'Venereal Disease' etc."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="4.  If Major 'Surgery' in the last 6 months."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="5.  If 'Vaccination' in the last 24 hours."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="6.  If Had a 'Miscarriage' in the last 6 months or have been 'Pregnant' / 'Lactating' in the last one year."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="7.  If Had 'Fainting Attacks' during last donation."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="8.  If Have regularly received treatment with 'Blood Products'."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="9.  If Shared a 'Needle to Inject Drugs' / have history of 'Drug Addiction'."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="10.  If Had 'Sexual Relations' with different partners or with a high risk individual."/>
+                    <Label Style="{StaticResource CustomLabelTermsConditionStyle}"
+                       Text="11.  Been tested positive for 'Antibodies to HIV'."/>
+                    <Label FontSize="Small" TextColor="Blue" Margin="0,30,0,100" VerticalOptions="Center" HorizontalOptions="Center"
+                       Text="http://www.virtualbloodbank.org/termscondition.html"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

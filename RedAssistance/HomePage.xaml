@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedAssistance.HomePage"
+             Title="Red Assistance">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Admin Console" Priority="1" Order="Secondary" Clicked="AdminConsolClicked"/>
+        <ToolbarItem Name="Refresh" Priority="2" Order="Secondary" Clicked="RefreshClicked"/>
+        <ToolbarItem Name="Add" Icon="Plus.png" Priority="1" Order="Primary" Clicked="BtnPlusClicked" />
+        <ToolbarItem Name="Refresh" Icon="Refresh.png" Priority="0" Order="Primary" Clicked="BtnRefreshClicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid RowSpacing="0" ColumnSpacing="2" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.119*"/>
+                <RowDefinition Height="0.001*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.28*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.166*"/>
+                <ColumnDefinition Width="0.166*"/>
+                <ColumnDefinition Width="0.155*"/>
+                <ColumnDefinition Width="0.001*"/>
+                <ColumnDefinition Width="0.155*"/>
+                <ColumnDefinition Width="0.166*"/>
+                <ColumnDefinition Width="0.166*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <StackLayout Padding="0" BackgroundColor="#d21d1d" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="4">
+
+            </StackLayout>
+
+            <Label x:Name="GuestNote"
+                IsVisible="False"
+                Margin="10,0,10,0"
+                HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="    Welcome Guest. You can only view donors and patient's requests. You can call them or message them. Read our " 
+                              TextColor="White" FontSize="12"/>
+                        <Span Text="Terms and Conditions" 
+                              TextColor="DeepSkyBlue" FontSize="12">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TermsConditionClicked"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text=" here. For more information " 
+                              TextColor="White" FontSize="12"/>
+                        <Span Text="Contact us." 
+                              TextColor="DeepSkyBlue" FontSize="12">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ContactusClicked"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label x:Name="UserNote" 
+                   IsVisible="False" Margin="10,0,10,0" IsEnabled="False" HorizontalOptions="Center" VerticalOptions="Center"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="     Welcome back " TextColor="White" FontSize="12"/>
+                        <Span x:Name="SpanUserName" TextColor="White" FontAttributes="Bold" FontSize="12"/>
+                        <Span Text=". You have added " TextColor="White" FontSize="12"/>
+                        <Span x:Name="SpanUserDonors" FontAttributes="Bold" TextColor="White" FontSize="12"/>
+                        <Span Text=" donors and " TextColor="White" FontSize="12"/>
+                        <Span x:Name="SpanUserRequests" FontAttributes="Bold" TextColor="White" FontSize="12"/>
+                        <Span Text=" blood requests so far. Read our " TextColor="White" FontSize="12"/>
+                        <Span Text="Terms and Conditions" 
+                              TextColor="DeepSkyBlue" FontSize="12">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TermsConditionClicked"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text=" . For more information " 
+                              TextColor="White" FontSize="12"/>
+                        <Span Text="Contact us." 
+                              TextColor="DeepSkyBlue" FontSize="12">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ContactusClicked"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <BoxView BackgroundColor="White" HeightRequest="1" WidthRequest="100"
+                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"/>
+
+            <Label Text="Donors Found" TextColor="White" FontSize="15"
+                   HorizontalOptions="Center" VerticalOptions="End" 
+                   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+            <Label x:Name="LblDonorCount" Text="0" TextColor="White" FontSize="55" FontAttributes="Bold"
+                   HorizontalOptions="Center" VerticalOptions="StartAndExpand"
+                   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+            <BoxView BackgroundColor="White" HeightRequest="1" WidthRequest="100"
+                     Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"/>
+
+            <Label Text="Patients" TextColor="White" FontSize="15"
+                   HorizontalOptions="Center" VerticalOptions="End"
+                   Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3"/>
+            <Label x:Name="LblPatientsCount" Text="0" FontSize="55" FontAttributes="Bold" TextColor="White" 
+                   HorizontalOptions="Center" VerticalOptions="StartAndExpand"
+                   Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="3"/>
+
+
+
+            <ImageButton Source="FindDonors.png" Margin="0,5,0,0" VerticalOptions="Center" BackgroundColor="#d21d1d"
+                         Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                         Clicked="FindDonorsClicked"/>
+            <ImageButton Source="FindPatients.png" Margin="0,5,0,0" VerticalOptions="Center" BackgroundColor="#d21d1d"
+                         Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3"
+                         Clicked="FindPatientsClicked_Event"/>
+
+            <ImageButton Source="BloodBanks.png" Margin="0,5,0,0" BackgroundColor="White"
+                         Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                         Clicked="BloodBankClicked"/>
+            <ImageButton Source="OurTeam.png" Margin="0,5,0,0" BackgroundColor="#d21d1d" 
+                         Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3"
+                         Clicked="TeamImgClicked"/>
+            <ImageButton Source="Detail.png" Margin="0,5,0,0" BackgroundColor="White" 
+                         Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2"
+                         Clicked="DetailClicked"/>
+
+            <ImageButton Source="TermsCondition.png" Margin="0,5,0,0" BackgroundColor="#d21d1d"
+                         Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                         Clicked="TermsConditionClicked"/>
+            <ImageButton Source="Eligibilty.png" BackgroundColor="White" Margin="0,5,0,0"
+                         Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3"
+                         Clicked="EligibiltyClicked"/>
+            <ImageButton Source="Share.png" Margin="0,5,0,0" BackgroundColor="#d21d1d" 
+                         Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2"
+                         Clicked="ShareImgClicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

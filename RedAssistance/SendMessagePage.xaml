@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.SendMessagePage"
+             BackgroundColor="White"
+             Title="Send Message">
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView VerticalOptions="StartAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout x:Name="StackLayoutAddDonor" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         Style="{StaticResource CustomStackLayoutEnteriesStyle}">
+                    <Label Text="Select Category" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Picker x:Name="PkrRole" Title="Send Message to:" Style="{StaticResource CustomEntryStyle}"
+                            SelectedIndexChanged="PkrRoleSelectedIndexChanged"/>
+                    <Entry x:Name="EntCellNumber" IsVisible="False" Keyboard="Telephone" Placeholder="03XXXXXXXXX" Style="{StaticResource CustomEntryStyle}"/>
+                    <Editor x:Name="EditorMessage" Placeholder="Enter Message" HeightRequest="150" Style="{StaticResource CustomEntryStyle}"/>
+                    <Button Text="Send" x:Name="BtnSendMessage" Style="{StaticResource CustomButtonStyleBottomMargin}"
+                        Clicked="BtnSendMessage_OnClicked"/>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

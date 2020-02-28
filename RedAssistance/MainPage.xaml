@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RedAssistance"
+             x:Class="RedAssistance.MainPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Master" BackgroundColor="Gainsboro">
+            <AbsoluteLayout Style="{StaticResource GeneralLayout}">
+                <StackLayout x:Name="LoginLayoutScrlvw" Style="{StaticResource GeneralLayout}" 
+                             Margin="0,0,0,10"  
+                             AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                    <Image Source="RedAssistance" HeightRequest="100" HorizontalOptions="CenterAndExpand"/>
+
+                    <StackLayout VerticalOptions="EndAndExpand">
+                        <Button x:Name="LoginBtn" Text="Login" Style="{StaticResource CustomButtonStyle}"
+                                Clicked="LoginBtn_Clicked"/>
+                        <Label Text="If you don't have account you can create by tapping the register button." Margin="5,10,5,0" HorizontalTextAlignment="Center"/>
+                        <Button x:Name="RegisterBtn" Text="Register as new user" 
+                            Clicked="RegisterBtn_OnClicked" Style="{StaticResource CustomButtonStyle}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <ScrollView x:Name="UserDetailLayoutScrlvw" IsVisible="False" Style="{StaticResource CustomScrolView}" 
+                            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                    <StackLayout Style="{StaticResource GeneralLayout}" 
+                                 AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                        <ListView x:Name="LvUserInfo" HeightRequest="400" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell IsEnabled="False">
+                                        <ViewCell.View>
+                                            <StackLayout Spacing="0">
+                                                <StackLayout 
+                                                    Padding="20"
+                                                    HeightRequest="200"
+                                                    BackgroundColor="#d21d1d" Spacing="0">
+
+                                                    <!--<Label Text="Edit" TextColor="White" HorizontalOptions="EndAndExpand" Margin="0,0,5,10">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer x:Name="BtnEditLabel" Tapped="BtnEditLabel_Tapped"/>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>-->
+
+                                                    <Frame 
+                                                        CornerRadius="100"   
+                                                        HeightRequest="120"
+                                                        WidthRequest="120"
+                                                        BorderColor="#d21d1d" Padding="20"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="CenterAndExpand">
+                                                        <Label Text="{Binding BloodGroup}"
+                                                            FontAttributes="Bold"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            FontSize="60" TextColor="#d21d1d"/>
+                                                    </Frame>
+
+                                                </StackLayout>
+
+                                                <Grid Margin="15" RowSpacing="1" ColumnSpacing="1">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="0.2*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Image Source="UserName.png" HeightRequest="30" Grid.Row="0" Grid.Column="0" />
+                                                    <Label Text="{Binding CapName}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                                           TextColor="#d21d1d" FontSize="Medium" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"/>
+                                                    <BoxView HeightRequest="1" WidthRequest="100" Color="LightGray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                                    <Image Source="CallIcon.png" HeightRequest="30" Grid.Row="2" Grid.Column="0"/>
+                                                    <Label Text="{Binding CellNumber}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                                           TextColor="#d21d1d" FontSize="Medium" FontAttributes="Bold" Grid.Row="2" Grid.Column="1"/>
+                                                    <BoxView HeightRequest="1" WidthRequest="100" Color="LightGray" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                                    <Image Source="Home.png" HeightRequest="30" Grid.Row="4" Grid.Column="0"/>
+                                                    <Label Text="{Binding Area}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                                           TextColor="#d21d1d" FontSize="Small" Grid.Row="4" Grid.Column="1"/>
+                                                    <BoxView HeightRequest="1" WidthRequest="100" Color="LightGray" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                                    <Image Source="Email.png" HeightRequest="30" Grid.Row="6" Grid.Column="0"/>
+                                                    <Label Text="{Binding Email}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                                           FontSize="Small" Grid.Row="6" Grid.Column="1"/>
+                                                    <BoxView HeightRequest="1" WidthRequest="100" Color="LightGray" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                                    <Label Text="{Binding TodayDate,StringFormat='{}{0:dd MM, yyyy}'}" HorizontalOptions="EndAndExpand"
+                                                           FontSize="10" Grid.Row="8" Grid.Column="1"/>
+                                                </Grid>
+
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Button x:Name="EditBtn" Text="Edit Info" Clicked="BtnEditLabel_Tapped"
+                                Style="{StaticResource CustomButtonStyle}"/>
+                        <Button x:Name="DonorBtn" Text="My Donors" Clicked="DonorBtnClicked"
+                                Style="{StaticResource CustomButtonStyle}"/>
+                        <Button x:Name="RequestBtn" Text="My Requests" Clicked="RequestBtnClicked"
+                                Style="{StaticResource CustomButtonStyle}"/>
+                        <Button x:Name="PasswordBtn" Text="Change Password" Clicked="ChangePasswordClicked"
+                                Style="{StaticResource CustomButtonStyle}"/>
+                        <Button x:Name="LogoutBtn" Text="Logout" Clicked="LogoutBtnClicked" Style="{StaticResource CustomButtonStyle}"/>
+
+                        <Label Text="© 2019 - University of Education, Township Lahore" 
+                               Margin="0,20,10,10" TextColor="Gray" FontSize="10"
+                               HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </ScrollView>
+
+                <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+                </StackLayout>
+
+            </AbsoluteLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>
+

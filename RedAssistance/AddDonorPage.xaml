@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.AddDonorPage"
+             BackgroundColor="White"
+             Title="Add Donor">
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView VerticalOptions="StartAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout x:Name="StackLayoutAddDonor" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         Style="{StaticResource CustomStackLayoutEnteriesStyle}">
+
+                    <Label Text="This following information is very important. Donor will be add as reference to your account" 
+                       Margin="5,10,5,0" HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Full Name" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntFullName" Placeholder="Example( Muhammad Ali )" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Label Text="Cell Number" Style="{StaticResource CustomLabelEntryStyle}"/>
+                    <Entry x:Name="EntCellNumber" Keyboard="Telephone" Placeholder="03XXXXXXXXX" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Grid Margin="20,0,20,0" RowSpacing="1" ColumnSpacing="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Text="City" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                               Style="{StaticResource CustomHeadingLabelStyle}"/>
+                        <Picker x:Name="PkrCity" Title="Choose City"
+                                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                SelectedIndexChanged="PkrAddDonorCity_OnSelectedIndexChanged" />
+
+                        <Label Text="Area" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                               Style="{StaticResource CustomHeadingLabelStyle}"/>
+                        <Picker x:Name="PkrArea" Title="Nearest Area"
+                                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+                                SelectedIndexChanged="PkrAddDonorArea_OnSelectedIndexChanged"/>
+
+                        <Label Text="Select your blood group by tapping on it." 
+                               Margin="0,10,0,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Select Blood Group" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                               Margin="10,0,0,5" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                        <Label x:Name="LblAp" Text="A+" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="4" Grid.Column="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Ap" Tapped="Ap_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblAn" Text="A-" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="4" Grid.Column="1">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="An" Tapped="An_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblBp" Text="B+" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="4" Grid.Column="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Bp" Tapped="Bp_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblBn" Text="B-" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="4" Grid.Column="3">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Bn" Tapped="Bn_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblAbp" Text="AB+" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="5" Grid.Column="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Abp" Tapped="Abp_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblAbn" Text="AB-" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="5" Grid.Column="1">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Abn" Tapped="Abn_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblOp" Text="O+" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="5" Grid.Column="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Op" Tapped="Op_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblOn" Text="O-" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="5" Grid.Column="3">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="On" Tapped="On_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                    </Grid>
+
+                    <Grid Margin="30,10,30,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="0.5*"/>
+                            <ColumnDefinition  Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Are You Available ?" TextColor="#d21d1d" Grid.Row="0" Grid.Column="0"/>
+                        <Switch x:Name="AvlSwitch" IsToggled="True" Grid.Row="0" Grid.Column="1" IsEnabled="true" Toggled="Switch_Toggled"
+                            HorizontalOptions="EndAndExpand"/>
+                    </Grid>
+
+
+                    <Button Text="Add" x:Name="BtnAddDonor" Style="{StaticResource CustomButtonStyleBottomMargin}"
+                        Clicked="BtnAddDonor_OnClicked"/>
+                    <Button Text="Update" x:Name="BtnUpdateDonor" IsVisible="False" Style="{StaticResource CustomButtonStyleBottomMargin}"
+                        Clicked="BtnUpdateDonor_OnClicked"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

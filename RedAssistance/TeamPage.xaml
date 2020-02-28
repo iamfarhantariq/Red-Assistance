@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RedAssistance.TeamPage"
+             BackgroundColor="White"
+             Title="Team">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout Padding="6" Orientation="Vertical" VerticalOptions="Center" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource CustomStackLayoutEnteriesStyle}">
+
+                <ListView x:Name="LvContactus" CachingStrategy="RecycleElement" HasUnevenRows="True" ItemTapped="LvContactus_OnItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition  Width="0.3*"/>
+                                            <ColumnDefinition  Width="0.15*"/>
+                                            <ColumnDefinition  Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image Source="Man" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"/>
+                                        <Label  Text="Name" Grid.Row="0" Grid.Column="1" />
+                                        <Label Text="{Binding UserName}" TextColor="#d21d1d" FontSize="Medium" Grid.Row="0" Grid.Column="2" />
+                                        <Label Text="Cell #" Grid.Row="1" Grid.Column="1"/>
+                                        <Label Text="{Binding CellNumber}" TextColor="#424949" FontSize="Medium" Grid.Row="1" Grid.Column="2"/>
+                                        <Label Text="Role" Grid.Row="2" Grid.Column="1"/>
+                                        <Label Text="{Binding Role}" TextColor="#424949" FontSize="Small" Grid.Row="2" Grid.Column="2"/>
+                                        <Label Text="From" Grid.Row="3" Grid.Column="1"/>
+                                        <Label Text="{Binding From}" TextColor="#424949" FontSize="Small" Grid.Row="3" Grid.Column="2"/>
+
+                                        <Label Text="Click to Call" HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#d21d1d" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

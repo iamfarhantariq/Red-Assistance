@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedAssistance.RegisterUser">
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <StackLayout x:Name="LayoutCellNumber" IsVisible="True" 
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout Margin="0,20,0,0" Orientation="Vertical">
+                    <Image x:Name="HeaderCellNumberSignup" Source="signuplogo.png"/>
+
+                    <Label Text="Cell Number" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntCellNumber" Keyboard="Telephone" Placeholder="03XXXXXXXXX" Style="{StaticResource CustomEntryStyle}"/>
+                    <Button Text="Next" x:Name="BtnCellNext" Style="{StaticResource CustomButtonStyle}"
+                            Clicked="BtnNextCellClicked"/>
+
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout x:Name="LayoutCodeSection" IsVisible="False" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout Margin="0,20,0,0" Orientation="Vertical">
+                    <Label Text="Verify Your Cell Number "  Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntVerificationCode" Placeholder="Enter your Code" Keyboard="Telephone" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Button Text="Submit" x:Name="BtnCodeSend" Style="{StaticResource CustomButtonStyle}"
+                            Clicked="BtnCodeVeryClicked"/>
+                </StackLayout>
+            </StackLayout>
+
+            <ScrollView x:Name="ScrollViewDetails" IsVisible="False" Style="{StaticResource CustomScrolView}"
+                        VerticalOptions="StartAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout x:Name="StackLayoutSignup" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                    <Label Text="For signup, fill this form carefully. You can change these information after login." 
+                           Margin="0,10,0,0"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="Full Name" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntFullName" Placeholder="Example( Muhammad Ali )" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Grid Margin="20,0,20,0" RowSpacing="1" ColumnSpacing="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Text="City" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                               Style="{StaticResource CustomHeadingLabelStyle}"/>
+                        <Picker x:Name="PkrCity" Title="Choose City" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                SelectedIndexChanged="PkrAddDonorCity_OnSelectedIndexChanged"/>
+
+                        <Label Text="Area" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                               Style="{StaticResource CustomHeadingLabelStyle}"/>
+                        <Picker x:Name="PkrArea" Title="Nearest Area" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+                                SelectedIndexChanged="PkrAddDonorArea_OnSelectedIndexChanged"/>
+
+                        <Label Text="Select your blood group by tapping on it. If you dont know your blood group leave it untapped." 
+                               Margin="0,10,0,0"
+                               Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Select Blood Group (Optional)" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                               Margin="10,0,0,5"
+                               Style="{StaticResource CustomHeadingLabelStyle}"/>
+                        <Label x:Name="LblAp" Text="A+" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="4" Grid.Column="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Ap" Tapped="Ap_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblAn" Text="A-" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="4" Grid.Column="1">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="An" Tapped="An_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblBp" Text="B+" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="4" Grid.Column="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Bp" Tapped="Bp_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblBn" Text="B-" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="4" Grid.Column="3">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Bn" Tapped="Bn_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblAbp" Text="AB+" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="5" Grid.Column="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Abp" Tapped="Abp_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblAbn" Text="AB-" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="5" Grid.Column="1">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Abn" Tapped="Abn_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblOp" Text="O+" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="5" Grid.Column="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Op" Tapped="Op_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label x:Name="LblOn" Text="O-" Style="{StaticResource CustomLabelGridBlood}"
+                               Grid.Row="5" Grid.Column="3">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="On" Tapped="On_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <Label Text="Email"  Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntEmail" Keyboard="Email" Placeholder="Enter Email Address" Style="{StaticResource CustomEntryStyle}"/>
+                    <Label x:Name="LblEmail" Text="Invalid Email" Style="{StaticResource CustomUnderLabelStyle}"/>
+
+                    <Label x:Name="LblPassword" Text="Password" Style="{StaticResource CustomHeadingLabelStyle}"/>
+                    <Entry x:Name="EntPassword" IsPassword="True" Placeholder="Enter Password" Style="{StaticResource CustomEntryStyle}"/>
+
+                    <Button Text="Create Account" x:Name="BtnCreateAccount" Style="{StaticResource CustomButtonStyleBottomMargin}"
+                            Clicked="CreateAccountClicked"/>
+                    <Button Text="Update" x:Name="BtnUpdateAccount" IsVisible="False" Style="{StaticResource CustomButtonStyleBottomMargin}"
+                            Clicked="UpdateAccountClicked"/>
+                    <Button Text="Update" x:Name="BtnUpdateAccount2" IsVisible="False" Style="{StaticResource CustomButtonStyleBottomMargin}"
+                            Clicked="UpdateAccountClicked2"/>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Padding="6" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ActivityIndicator x:Name="WaitingLoader" Style="{StaticResource CustomActivityIndicator}"/>
+            </StackLayout>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
