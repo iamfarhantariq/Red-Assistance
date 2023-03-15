@@ -1,3 +1,6 @@
+**This project is tested with [BrowserStack](https://www.browserstack.com/)**
+
+
 # https://github.com/docker-library/python
 
 ## Maintained by: [the Docker Community](https://github.com/docker-library/python)
