@@ -1,4 +1,4 @@
-**This project is tested with [BrowserStack](https://www.browserstack.com/)**
+*This project is tested with [BrowserStack](https://www.browserstack.com/)*
 
 
 # https://github.com/docker-library/python
